@@ -150,7 +150,7 @@ Calculadas pelo `Evaluator` ao fim de cada época:
 | `pseudo_loglik` | Pseudo-log-verossimilhança (inverte 1 bit aleatório por exemplo) |
 | `FE_gap` | Energia livre média da validação menos a do treino | 
 
-Observação: Uma RBM pode reconstruir bem e gerar mal. **Julgue pelas amostras.**
+Observação: Uma RBM pode reconstruir bem os exemplos e gerar mal. Então, é de suma importância **julgar pelas amostras** também para avaliar o desempenho.
 
 ## Referências
 
