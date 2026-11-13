@@ -145,7 +145,7 @@ Cuidados:
 Calculadas pelo `Evaluator` ao fim de cada época:
 
 | Métrica | Descrição |
-|---|---|---|
+|---|---|
 | `reconstruction_error` | Erro quadrático médio por pixel entre `v` e `p(v\|h)` |
 | `pseudo_loglik` | Pseudo-log-verossimilhança (inverte 1 bit aleatório por exemplo) |
 | `FE_gap` | Energia livre média da validação menos a do treino | 
