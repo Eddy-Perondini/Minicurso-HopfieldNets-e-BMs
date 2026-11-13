@@ -33,4 +33,15 @@ class Evaluator:
         dead = norms < threshold * np.median(norms)
 
         return int(dead.sum()), len(norms)
+
+    def class_histogram(self, clf, n_samples=1000, n_steps=1000, v_init=None):
+        '''Gera amostras, classifica e devolve (proporção por classe, entropia normalizada)'''
+        
+        pv = self.rbm.generate(n_samples, n_steps=n_steps, v_init=v_init)
+        pred = clf.predict((pv > 0.5).astype(np.float32))
+        counts = np.bincount(pred, minlength=10)
+        p = counts / counts.sum()
+        nz = p[p > 0]
+        entropy = float(-(nz * np.log(nz)).sum() / np.log(len(counts)))
+        return p, entropy
     
