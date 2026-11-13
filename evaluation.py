@@ -26,4 +26,11 @@ class Evaluator:
             "FE_gap": float(self.rbm.free_energy(dataset.val).mean() - self.rbm.free_energy(tr).mean()) 
         }
 
+    def dead_units(self, threshold = 0.5): 
+        '''conta unidades ocultas cujo vetor de pesos é bem menor que o comum'''
+
+        norms = np.linalg.norm(self.rbm.W, axis = 0)
+        dead = norms < threshold * np.median(norms)
+
+        return int(dead.sum()), len(norms)
     

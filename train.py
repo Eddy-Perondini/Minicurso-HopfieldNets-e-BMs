@@ -15,6 +15,10 @@ def main():
     trainer.fit(ds, checkpoint_path="checkpoints/rbm.pkl", every=1)
     rbm.save("checkpoints/rbm_final.npz")
 
+    
+    n_dead, n_total = Evaluator(rbm).dead_units()
+    print(f"{n_dead} unidades mortas de {n_total}")
+
     save_filters(rbm, ds.image_shape, 'filters.png') 
 
     samples = rbm.generate(100, n_steps = 1000, v_init = ds.val[:100])

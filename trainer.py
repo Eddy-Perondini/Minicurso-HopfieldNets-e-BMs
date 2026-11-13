@@ -87,11 +87,11 @@ class Trainer:
             pickle.dump(state, f)
         os.replace(tmp, path) #substitui o arquivo antigo pelo novo de forma atomica, evitando corrupções em caso de falha durante a escrita do arquivo
 
-        def load_checkpoint(self, path):
-            with open(path, "rb") as f: 
-                s = pickle.load(f) 
-            self.rbm.W, self.rbm.b, self.rbm.c = s["W"], s["b"], s["c"]
-            self.vW, self.vb, self.vc = s["vW"], s["vb"], s["vc"]
-            self._chain, self.history = s["chain"], s["history"]
-            self.rbm.rng.bit_generator.state = s["rng"]
-            return s["epoch"]  
+    def load_checkpoint(self, path):
+        with open(path, "rb") as f: 
+            s = pickle.load(f) 
+        self.rbm.W, self.rbm.b, self.rbm.c = s["W"], s["b"], s["c"]
+        self.vW, self.vb, self.vc = s["vW"], s["vb"], s["vc"]
+        self._chain, self.history = s["chain"], s["history"]
+        self.rbm.rng.bit_generator.state = s["rng"]
+        return s["epoch"]  

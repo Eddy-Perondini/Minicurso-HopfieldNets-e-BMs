@@ -13,7 +13,7 @@ class ModelConfig:
 
 @dataclass 
 class TrainingConfig:
-    epochs: int = 30 
+    epochs: int = 50
     batch_size: int = 128
     lr: float = 0.05
     k: int = 1 #passos de Gibbs ==> CD-k 
