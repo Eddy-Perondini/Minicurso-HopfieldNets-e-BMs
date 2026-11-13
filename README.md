@@ -144,11 +144,11 @@ Cuidados:
 
 Calculadas pelo `Evaluator` ao fim de cada época:
 
-| Métrica | O que é | Como ler |
+| Métrica | Descrição |
 |---|---|---|
-| `reconstruction_error` | Erro quadrático médio por pixel entre `v` e `p(v\|h)` | Deve cair. **Não garante boa geração.** |
-| `pseudo_loglik` | Pseudo-log-verossimilhança (inverte 1 bit aleatório por exemplo) | Deve subir, mas é **muito ruidosa**: olhe a tendência, não uma época isolada. |
-| `FE_gap` | Energia livre média da validação menos a do treino | Crescimento sustentado indica **overfitting**. |
+| `reconstruction_error` | Erro quadrático médio por pixel entre `v` e `p(v\|h)` |
+| `pseudo_loglik` | Pseudo-log-verossimilhança (inverte 1 bit aleatório por exemplo) |
+| `FE_gap` | Energia livre média da validação menos a do treino | 
 
 Observação: Uma RBM pode reconstruir bem e gerar mal. **Julgue pelas amostras.**
 
