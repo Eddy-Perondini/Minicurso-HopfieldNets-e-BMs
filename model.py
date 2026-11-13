@@ -46,3 +46,13 @@ class RBM:
             v, pv = self.gibbs_step(v) #realiza passos de Gibbs
 
         return pv 
+
+    def save(self, path): 
+        np.savez(path, W = self.W, b = self.b, c = self.c) #salva os parâmetros do RBM em um arquivo .npz 
+
+    @classmethod 
+    def load(cls, path):
+        d = np.load(path) #carrega os parâmetros do RBM de um arquivo .npz 
+        rbm = cls(d["W"].shape[0], d["W"].shape[1], seed = 67)
+        rbm.W, rbm.b, rbm.c = d["W"], d["b"], d["c"]
+        return rbm 

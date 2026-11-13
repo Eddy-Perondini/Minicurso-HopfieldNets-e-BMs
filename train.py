@@ -11,7 +11,9 @@ def main():
     tcfg = TrainingConfig() 
     ds = ImageDataset(dcfg) 
     rbm = RBM(ds.n_features, mcfg.n_hidden, seed = mcfg.seed)
-    Trainer(rbm, tcfg, Evaluator(rbm)).fit(ds)
+    trainer = Trainer(rbm, tcfg, Evaluator(rbm))
+    trainer.fit(ds, checkpoint_path="checkpoints/rbm.pkl", every=1)
+    rbm.save("checkpoints/rbm_final.npz")
 
     save_filters(rbm, ds.image_shape, 'filters.png') 
 

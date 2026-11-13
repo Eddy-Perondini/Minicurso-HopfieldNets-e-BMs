@@ -1,4 +1,6 @@
 import numpy as np 
+import os 
+import pickle 
 
 class Trainer: 
     def __init__(self, rbm, cfg, evaluator = None):
@@ -45,19 +47,51 @@ class Trainer:
         rbm.W += self.vW; rbm.b += self.vb; rbm.c += self.vc #atualiza os parâmetros do RBM 
 
 
-    def fit(self, dataset): 
-        c = self.cfg 
+    def fit(self, dataset, checkpoint_path=None, every=1):
+        c = self.cfg
+        start = 0
+        if checkpoint_path and os.path.exists(checkpoint_path):
+            start = self.load_checkpoint(checkpoint_path)
+            print(f"retomando da época {start + 1}")
 
-        for epoch in range(c.epochs): 
-            momentum = c.momentum if epoch < 5 else c.final_momentum #momento baixo no inicio e alto no final do treinamento 
-
-            for batch in dataset.batches(c.batch_size): 
-                self._step(batch, momentum) 
-
-            if self.evaluator: 
+        for epoch in range(start, c.epochs):
+            momentum = c.momentum if epoch < 5 else c.final_momentum
+            for batch in dataset.batches(c.batch_size):
+                self._step(batch, momentum)
+            if self.evaluator:
                 metrics = self.evaluator.run(dataset)
                 self.history.append(metrics)
-
                 print(f"epoch {epoch+1:3d} | " + " | ".join(f"{k}={v:.4f}" for k, v in metrics.items()))
+            if checkpoint_path and (epoch + 1) % every == 0:
+                self.save_checkpoint(checkpoint_path, epoch + 1)
+        return self.history
 
-        return self.history 
+    def save_checkpoint(self, path, epoch): 
+        os.makedirs(os.path.dirname(path) or ".", exist_ok = True)
+
+        state = dict(
+            epoch = epoch,
+            W = self.rbm.W,
+            b = self.rbm.b,
+            c = self.rbm.c,
+            vW = self.vW,
+            vb = self.vb,
+            vc = self.vc,
+            chain = self._chain, 
+            history = self.history,
+            rng = self.rbm.rng.bit_generator.state
+            ) 
+
+        tmp = path + ".tmp"
+        with open(tmp, "wb") as f:
+            pickle.dump(state, f)
+        os.replace(tmp, path) #substitui o arquivo antigo pelo novo de forma atomica, evitando corrupções em caso de falha durante a escrita do arquivo
+
+        def load_checkpoint(self, path):
+            with open(path, "rb") as f: 
+                s = pickle.load(f) 
+            self.rbm.W, self.rbm.b, self.rbm.c = s["W"], s["b"], s["c"]
+            self.vW, self.vb, self.vc = s["vW"], s["vb"], s["vc"]
+            self._chain, self.history = s["chain"], s["history"]
+            self.rbm.rng.bit_generator.state = s["rng"]
+            return s["epoch"]  

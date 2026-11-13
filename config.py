@@ -17,8 +17,8 @@ class TrainingConfig:
     batch_size: int = 128
     lr: float = 0.05
     k: int = 1 #passos de Gibbs ==> CD-k 
-    persistent: bool = False # True: PCD ao invés de CD-k 
+    persistent: bool = True # True: PCD, False: CD-k 
     momentum: float = 0.5
-    final_momentum: float = 0.9
-    weight_decay: float = 1e-4 
+    final_momentum: float = 0.5
+    weight_decay: float = 1e-3 
 
