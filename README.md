@@ -25,13 +25,13 @@ rbm_project/
 └── train.py           # ponto de entrada que monta tudo
 ```
 
-| Módulo | Responsabilidade | Não sabe nada sobre |
-|---|---|---|
-| `model.py` | Modelo probabilístico: calcula e amostra | treino, dados |
-| `trainer.py` | Algoritmo de aprendizado | como o dataset é carregado |
-| `data.py` | Carregar, binarizar, dividir, gerar batches | o modelo |
-| `evaluation.py` | Métricas de qualidade | como o treino funciona |
-| `visualization.py` | Gerar imagens (funções puras) | todos os outros |
+| Módulo | Responsabilidade | 
+|---|---|
+| `model.py` | Modelo probabilístico: calcula e amostra |
+| `trainer.py` | Algoritmo de aprendizado | 
+| `data.py` | Carregar, binarizar, dividir, gerar batches |
+| `evaluation.py` | Métricas de qualidade |
+| `visualization.py` | Gerar imagens (funções puras) |
 
 ## Como os módulos se conectam
 
