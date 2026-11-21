@@ -155,5 +155,4 @@ Observação: Uma RBM pode reconstruir bem os exemplos e gerar mal. Então, é d
 ## Material Didático do Minicurso
 
 [1] PERONDINI, E. R. N., Física, Computação e Neurociência:
-Uma Introdução à Redes Neurais de Hopfield e Máquinas de Boltzmann. [S. l.]: ResearchGate, 2026.
-Material didático. Preprint. DOI: 10.13140/RG.2.2.36207.80802.
+Uma Introdução à Redes Neurais de Hopfield e Máquinas de Boltzmann. [S. l.]: ResearchGate, 2026. Material didático (preprint). DOI: 10.13140/RG.2.2.36207.80802. Disponível em: https://doi.org/10.13140/RG.2.2.36207.80802. Acesso em: 21 nov. 2026.
