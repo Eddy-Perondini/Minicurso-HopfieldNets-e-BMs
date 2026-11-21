@@ -1,5 +1,4 @@
 import numpy as np
-
 from config import DataConfig
 from data import ImageDataset
 from model import RBM
@@ -9,7 +8,6 @@ import pickle
 
 N_SAMPLES = 1000
 STEPS = (50, 200)
-
 
 def main():
     ds = ImageDataset(DataConfig())
