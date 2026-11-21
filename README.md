@@ -152,8 +152,8 @@ Calculadas pelo `Evaluator` ao fim de cada época:
 
 Observação: Uma RBM pode reconstruir bem os exemplos e gerar mal. Então, é de suma importância **julgar pelas amostras** também para avaliar o desempenho.
 
-## Referências
+## Material Didático do Minicurso
 
-- Hinton, G. E. *A Practical Guide to Training Restricted Boltzmann Machines* (2010).
-- Tieleman, T. *Training Restricted Boltzmann Machines using Approximations to the Likelihood Gradient* (2008), artigo do PCD.
-- Hinton, G. E. *Training Products of Experts by Minimizing Contrastive Divergence* (2002), artigo do CD.
+[1] PERONDINI, E. R. N., Física, Computação e Neurociência:
+Uma Introdução à Redes Neurais de Hopfield e Máquinas de Boltzmann. [S. l.]: ResearchGate, 2026.
+Material didático. Preprint. DOI: 10.13140/RG.2.2.36207.80802.
