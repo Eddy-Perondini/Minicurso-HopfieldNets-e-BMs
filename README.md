@@ -154,4 +154,4 @@ Observação: Uma RBM pode reconstruir bem os exemplos e gerar mal. Então, é d
 
 ## Material Didático do Minicurso
 
-[1] https://www.researchgate.net/publication/418178648_Fisica_Computacao_e_Neurociencia_Uma_Introducao_a_Redes_Neurais_de_Hopfield_e_Maquinas_de_Boltzmann
+1. https://www.researchgate.net/publication/418182532_Fisica_Computacao_e_Neurociencia_Uma_Introducao_a_Redes_Neurais_de_Hopfield_e_Maquinas_de_Boltzmann
