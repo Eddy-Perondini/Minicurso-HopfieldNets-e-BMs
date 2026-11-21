@@ -21,7 +21,7 @@ def main():
 
     save_filters(rbm, ds.image_shape, 'filters.png') 
 
-    samples = rbm.generate(100, n_steps = 1000, v_init = ds.val[:100])
+    samples = rbm.generate(100, n_steps = 200, v_init = ds.val[:100])
 
     save_grid(samples, ds.image_shape, 'samples.png')
 

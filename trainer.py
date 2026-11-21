@@ -1,6 +1,7 @@
 import numpy as np 
 import os 
 import pickle 
+from tqdm import tqdm 
 
 class Trainer: 
     def __init__(self, rbm, cfg, evaluator = None):
@@ -54,14 +55,14 @@ class Trainer:
             start = self.load_checkpoint(checkpoint_path)
             print(f"retomando da época {start + 1}")
 
-        for epoch in range(start, c.epochs):
+        for epoch in tqdm(range(start, c.epochs),'Treinando a RBM...'):
             momentum = c.momentum if epoch < 5 else c.final_momentum
             for batch in dataset.batches(c.batch_size):
                 self._step(batch, momentum)
             if self.evaluator:
                 metrics = self.evaluator.run(dataset)
                 self.history.append(metrics)
-                print(f"epoch {epoch+1:3d} | " + " | ".join(f"{k}={v:.4f}" for k, v in metrics.items()))
+                tqdm.write(f"epoch {epoch+1:3d} | " + " | ".join(f"{k}={v:.4f}" for k, v in metrics.items()))
             if checkpoint_path and (epoch + 1) % every == 0:
                 self.save_checkpoint(checkpoint_path, epoch + 1)
         return self.history
