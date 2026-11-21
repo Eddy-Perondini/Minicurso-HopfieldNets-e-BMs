@@ -2,7 +2,9 @@
 
 Implementação didática de uma **Restricted Boltzmann Machine (RBM) Bernoulli-Bernoulli** em NumPy puro, treinada com **Contrastive Divergence (CD-k)** ou **Persistent CD (PCD)** em benchmarks de imagens (MNIST, Fashion-MNIST, KMNIST).
 
-O código é organizado em módulos com responsabilidades claras, sem fragmentar em excesso: cada arquivo tem um conjunto de funções com um papel bem definido.
+## Material Didático do Minicurso
+
+1. https://www.researchgate.net/publication/418182532_Fisica_Computacao_e_Neurociencia_Uma_Introducao_a_Redes_Neurais_de_Hopfield_e_Maquinas_de_Boltzmann
 
 ## Instalação
 
@@ -151,7 +153,3 @@ Calculadas pelo `Evaluator` ao fim de cada época:
 | `FE_gap` | Energia livre média da validação menos a do treino | 
 
 Observação: Uma RBM pode reconstruir bem os exemplos e gerar mal. Então, é de suma importância **julgar pelas amostras** também para avaliar o desempenho.
-
-## Material Didático do Minicurso
-
-1. https://www.researchgate.net/publication/418182532_Fisica_Computacao_e_Neurociencia_Uma_Introducao_a_Redes_Neurais_de_Hopfield_e_Maquinas_de_Boltzmann
